@@ -20,7 +20,7 @@ const {
 import isDev from 'electron-is-dev';
 import installExtension, {REACT_DEVELOPER_TOOLS} from 'electron-devtools-installer';
 import {parse as parseArgv} from 'yargs';
-import setPortablePaths from '@warren-bank/electron-win-portable-paths';
+import {makePortable, setPortablePaths} from '@warren-bank/electron-win-portable-paths';
 
 import {protocols} from '../electron-builder.json';
 
@@ -69,6 +69,10 @@ let permissionManager = null;
 
 const argv = parseArgv(process.argv.slice(1));
 const hideOnStartup = shouldBeHiddenOnStartup(argv);
+
+if (argv['portable']) {
+    makePortable(app);
+}
 
 if (!setPortablePaths(app, argv['data-dir']) && argv['data-dir']) {
   app.setPath('userData', path.resolve(argv['data-dir']));
