@@ -6,10 +6,10 @@
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/7zip/-/7zip-0.0.6.tgz#9cafb171af82329490353b4816f03347aa150a30"
 
-"@warren-bank/electron-win-portable-paths@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@warren-bank/electron-win-portable-paths/-/electron-win-portable-paths-0.2.0.tgz#6fe23dc32e56389b9548e87754b7a381ae30e60a"
-  integrity sha512-7UZ1AJ3/Q7GPDFJOIqfMImGzL2eRJHu63lgz6sM3i/8pA7oA8WC0RmlYr/GPfddQvp3wea5b+9dv4fLk/quDpg==
+"@warren-bank/electron-win-portable-paths@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@warren-bank/electron-win-portable-paths/-/electron-win-portable-paths-0.3.0.tgz#ee3ba7be19351253d67443b8475dda1d6b2f167b"
+  integrity sha512-b13mg1LNSd7m7Nl3osrcFIoRDQErKE6iZt3s2VtIgMzHDFczqMBPAjCWgm9awQ2JTcE33phSKWp42Td1aJ7KKQ==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
