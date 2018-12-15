@@ -78,7 +78,7 @@ global.isDev = isDev && !argv.disableDevMode;
 
 let config = {};
 try {
-  const configFile = app.getPath('userData') + '/config.json';
+  const configFile = path.resolve(app.getPath('userData'), 'config.json');
   config = settings.readFileSync(configFile);
   if (config.version !== settings.version) {
     config = settings.upgrade(config);
@@ -90,7 +90,7 @@ try {
   if (!config.teams.length && config.defaultTeam) {
     config.teams.push(config.defaultTeam);
 
-    const configFile = app.getPath('userData') + '/config.json';
+    const configFile = path.resolve(app.getPath('userData'), 'config.json');
     settings.writeFileSync(configFile, config);
   }
 }
@@ -99,7 +99,7 @@ if (config.enableHardwareAcceleration === false) {
 }
 
 ipcMain.on('update-config', () => {
-  const configFile = app.getPath('userData') + '/config.json';
+  const configFile = path.resolve(app.getPath('userData'), 'config.json');
   config = settings.readFileSync(configFile);
   if (process.platform === 'win32' || process.platform === 'linux') {
     const appLauncher = new AutoLauncher();
@@ -409,11 +409,11 @@ app.on('ready', () => {
 
   if (!config.spellCheckerLocale) {
     config.spellCheckerLocale = SpellChecker.getSpellCheckerLocale(app.getLocale());
-    const configFile = app.getPath('userData') + '/config.json';
+    const configFile = path.resolve(app.getPath('userData'), 'config.json');
     settings.writeFileSync(configFile, config);
   }
 
-  const appStateJson = path.join(app.getPath('userData'), 'app-state.json');
+  const appStateJson = path.resolve(app.getPath('userData'), 'app-state.json');
   appState = new AppStateManager(appStateJson);
   if (wasUpdated(appState.lastAppVersion)) {
     clearAppCache();
@@ -442,7 +442,7 @@ app.on('ready', () => {
 
   mainWindow = createMainWindow(config, {
     hideOnStartup,
-    linuxAppIcon: path.join(assetsDir, 'appicon.png'),
+    linuxAppIcon: path.resolve(assetsDir, 'appicon.png'),
     deeplinkingUrl,
   });
 
@@ -646,7 +646,7 @@ app.on('ready', () => {
   });
   ipcMain.emit('update-dict');
 
-  const permissionFile = path.join(app.getPath('userData'), 'permission.json');
+  const permissionFile = path.resolve(app.getPath('userData'), 'permission.json');
   const trustedURLs = settings.mergeDefaultTeams(config.teams).map((team) => team.url);
   permissionManager = new PermissionManager(permissionFile, trustedURLs);
   session.defaultSession.setPermissionRequestHandler(permissionRequestHandler(mainWindow, permissionManager));
