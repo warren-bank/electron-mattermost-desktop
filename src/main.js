@@ -20,7 +20,7 @@ const {
 import isDev from 'electron-is-dev';
 import installExtension, {REACT_DEVELOPER_TOOLS} from 'electron-devtools-installer';
 import {parse as parseArgv} from 'yargs';
-import {makePortable, setPortablePaths} from '@warren-bank/electron-win-portable-paths';
+import {makePortable, setPortablePaths} from '@warren-bank/electron-portable-paths';
 
 import {protocols} from '../electron-builder.json';
 
