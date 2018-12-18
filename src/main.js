@@ -74,7 +74,7 @@ if (argv['portable']) {
     makePortable(app);
 }
 
-if (!setPortablePaths(app, argv['data-dir']) && argv['data-dir']) {
+if (!setPortablePaths(app, true, argv['data-dir']) && argv['data-dir']) {
   app.setPath('userData', path.resolve(argv['data-dir']));
 }
 
