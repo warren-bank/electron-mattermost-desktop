@@ -70,8 +70,8 @@ let permissionManager = null;
 const argv = parseArgv(process.argv.slice(1));
 const hideOnStartup = shouldBeHiddenOnStartup(argv);
 
-if (argv['portable']) {
-    makePortable(app);
+if (argv.portable) {
+  makePortable(app);
 }
 
 if (!setPortablePaths(app, true, argv['data-dir']) && argv['data-dir']) {
